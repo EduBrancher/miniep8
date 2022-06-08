@@ -26,6 +26,7 @@ bool testValidateUserInput(string (*ValidateUserInput)(string input)){
             return false;
         }
     }
+    return true;
 }
 
 bool testDefineWinningPlayer(string (*DefineWinningPlayer)(string playerChoice, string computerChoice)){
@@ -99,7 +100,12 @@ string RandomSelector(int seed){
 }
 
 string ValidateUserInput(string input){
-    return "abuble";
+    if (input == "rock" || input == "scissors" || input == "paper"){
+        return "valid";
+    }
+    else{
+        return "invalid";
+    }
 }
 
 int runTests(){
