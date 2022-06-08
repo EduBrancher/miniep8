@@ -186,6 +186,30 @@ int main(){
     if (testsFailed > 0){
         exit(0);
     }
-    
-    
+    while (true){
+        string valid = "invalid";
+        string input;
+        while (valid == "invalid"){
+            cout << "Please type in your move: rock, paper or scissors (exit to quit):" << endl;
+            cin >> input;
+            if (input == "exit"){
+                exit(0);
+            }
+            valid = ValidateUserInput(input);
+            if (valid == "invalid"){
+                cout << "Invalid input, retrying" << endl;
+            }
+        }
+        string computerMove = RandomSelector();
+        string result = DefineWinningPlayer(input, computerMove);
+        if (result == "tie"){
+            cout << "The result is a tie: Computer chose " << computerMove << " you chose " << input << endl;
+        }
+        else if (result == "player"){
+            cout << "You won: Computer chose " << computerMove << " you chose " << input << endl;
+        }
+        else{
+            cout << "You lost: Computer chose " << computerMove << " you chose " << input << endl;
+        }
+    }   
 }
