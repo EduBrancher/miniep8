@@ -43,7 +43,40 @@ bool testDefineWinningPlayer(string (*DefineWinningPlayer)(string playerChoice, 
 }
 
 string DefineWinningPlayer(string playerChoice, string computerChoice){
-    return "abuble";
+    if (playerChoice == "scissors"){
+        if (computerChoice == "rock"){
+            return "computer";
+        }
+        if (computerChoice == "scissors"){
+            return "tie";
+        }
+        if (computerChoice == "paper"){
+            return "player";
+        }
+    }
+    else if (playerChoice == "rock"){
+        if (computerChoice == "scissors"){
+            return "player";
+        }
+        if (computerChoice == "rock"){
+            return "tie";
+        }
+        if (computerChoice == "paper"){
+            return "computer";
+        }
+    }
+    else{ //paper
+        if (computerChoice == "scissors"){
+            return "computer";
+        }
+        if (computerChoice == "paper"){
+            return "tie";
+        }
+        else{
+            return "player";
+        }
+    }
+    return "none";
 }
 
 string RandomSelector(int seed){
@@ -55,9 +88,12 @@ string ValidateUserInput(string input){
 }
 
 int runTests(){
-    bool test = testDefineWinningPlayer(DefineWinningPlayer);
     int testsPassed = 0;
     int testsFailed = 0;
+
+    string (*defWinningPlayer)(string a, string b);
+    defWinningPlayer = &DefineWinningPlayer;
+    bool test = testDefineWinningPlayer(defWinningPlayer);
     if (test == false){
         cout << "test failed in DefineWinningPlayer function" << endl;
         testsFailed++;
@@ -65,7 +101,7 @@ int runTests(){
     else{
         testsPassed++;
     }
-    test = testValidateUserInput(ValidateUserInput);
+    test = testValidateUserInput(&ValidateUserInput);
     if (test == false){
         cout << "test failed in ValidateUserInput function" << endl;
         testsFailed++;
@@ -73,7 +109,7 @@ int runTests(){
     else{
         testsPassed++;
     }
-    test = testRandomSelector(RandomSelector);
+    test = testRandomSelector(&RandomSelector);
     if (test == false){
         cout << "test failed in RandomSelector function" << endl;
         testsFailed++;
