@@ -5,8 +5,30 @@
 
 using namespace std;
 
-bool testRandomSelector(string (*RandomSelector)(int)){
-    return false;
+bool testRandomSelector(string (*RandomSelector)()){
+    string retval;
+    int rock_counter = 0;
+    int paper_counter = 0;
+    int scissors_counter = 0;
+    for (int i = 0; i < 1000; i++){
+        retval = RandomSelector();
+        if (retval != "rock" || retval != "scissors" || retval != "paper"){
+            return false;
+        }
+        if (retval == "rock"){
+            rock_counter++;
+        }
+        if (retval == "scissors"){
+            scissors_counter++;
+        }
+        if (retval == "paper"){
+            paper_counter++;
+        }
+        if (rock_counter < 250 || paper_counter < 250 || scissors_counter < 250){
+            return false;
+        }
+    }
+    return true;
 }
 
 bool testValidateUserInput(string (*ValidateUserInput)(string input)){
@@ -95,7 +117,7 @@ string DefineWinningPlayer(string playerChoice, string computerChoice){
     return "none";
 }
 
-string RandomSelector(int seed){
+string RandomSelector(){
     return "abuble";
 }
 
