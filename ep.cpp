@@ -9,8 +9,23 @@ bool testRandomSelector(string (*RandomSelector)(int)){
     return false;
 }
 
-bool testValidateUserInput(string (*GetUserInput)(string input)){
-    return false;
+bool testValidateUserInput(string (*ValidateUserInput)(string input)){
+    string userInputs[3] = {"rock", "scissors", "paper"};
+    string jokerInputs[3] = {"shacoTank", "HAHAHAHA", "why so serious"};
+    for (int i = 0; i < 3; i++){
+        string input = userInputs[i];
+        string testResult = ValidateUserInput(input);
+        if (testResult != "valid"){
+            return false;
+        } 
+    }
+    for (int i = 0; i < 3; i++){
+        string input = jokerInputs[i];
+        string testResult = ValidateUserInput(input);
+        if (testResult != "invalid"){
+            return false;
+        }
+    }
 }
 
 bool testDefineWinningPlayer(string (*DefineWinningPlayer)(string playerChoice, string computerChoice)){
