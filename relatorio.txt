@@ -1,0 +1,31 @@
+Sobre TDD
+
+Em primeiro lugar, quero ressaltar que acho testes de software, tanto de
+unidade como de integracao, fundamentais. Nenhum software que nao tenha
+uma suite de testes bem feita sera considerado um bom software e sera
+praticamente impossivel de manter. Logo, acho testes fundamentais para
+o desenvolvimento de software de qualidade.
+
+Entretanto, quanto ao TDD, em que se escreve os testes antes de escrever
+as funcoes, tenho algumas ressalvas. Uma vantagem clara do metodo que 
+percebi na minha experiencia foi o fato de que escrever o teste antes
+do codigo de fato me ajuda a definir que funcoes o programa deve ter,
+contribuindo para a separacao de funcoes. Porem, para isso devemos
+gastar uma certa quantidade de tempo escrevendo os testes, para depois
+escrever a funcao, para depois debugar os testes e a funcao: Nao da pra
+saber imediatamente se o problema esta no teste ou na funcao a menos
+que o codigo seja muito simples. Mesmo um programa tao simples como este,
+que se trata de um jogo de pedra-papel-tesoura, houve um caso em que eu 
+nao sabia se o bug estava no teste ou na funcao, e tive que isolar 
+(estava na funcao).
+
+Desse modo, nao estou convencido de que o uso de TDD leva a menos trabalho
+de depuracao do codigo, embora isso talvez venha de falta de pratica minha
+em escrever testes (talvez os testes e as funcoes devessem ser menores, de
+modo que fosse quase impossivel haver um bug no teste. Mas eu tenho dificuldade
+de imaginar testes mais simples do que esses).
+
+(O bug de que trato era uma reinicializacao indevida do gerador de numeros aleatorios,
+que gerava sempre o mesmo numero).
+
+PS: Desculpe a falta de acentos, estou usando um teclado nao-ABNT.
